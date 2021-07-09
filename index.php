@@ -10,18 +10,26 @@ require __DIR__ . "/classes/Product.php";
 require __DIR__ . "/classes/Customer.php";
 $discount = 30;
 
-$customer = new Customer("Paolo", "Citti", 0, 30, "M");
+$customer1 = new Customer("Paolo", "Citti", 30, "M", false);
+$customer2 = new Customer("Giulia", "Arcani", 26, "F", true);
 
 
+$products1 = [
+    $product1 = new Product("Iphone X", "https://m.media-amazon.com/images/I/71IluxZN8pL._AC_UL800_QL65_.jpg", 4, 300.50, "Tecnologia"),
 
-$products = [
-    $product1 = new Product("Iphone", "https://m.media-amazon.com/images/I/71IluxZN8pL._AC_UL800_QL65_.jpg", 4, 300.50, "Tecnologia", "Smartphone"),
+    $product2 = new Product("Penne Rigate", "https://flashdistribuzione.com/wp-content/uploads/2020/10/PENNE-RIGATE-600x600.jpg", 6, 3.50, "Alimentari"),
 
-    $product2 = new Product("Iphone", "https://m.media-amazon.com/images/I/71IluxZN8pL._AC_UL800_QL65_.jpg", 6, 350, "Tecnologia", "Smartphone"),
-
-    $product3 = new Product("Iphone", "https://m.media-amazon.com/images/I/71IluxZN8pL._AC_UL800_QL65_.jpg", 10, 320, "Tecnologia", "Smartphone")
+    $product3 = new Product("Nikon D5500", "https://www.weshoot.it/blog/wp-content/uploads/2015/01/phpigsx3r.jpg", 10, 320, "Tempo Libero")
 
 ];
+
+$products2 = [
+    $product1 = new Product("Tablet", "https://media.bytecno.it/catalog/product/1/_/1_740.jpg", 22, 240.00, "Tecnologia"),
+
+    $product2 = new Product("Insalata", "https://d21mug5vzt7ic2.cloudfront.net/primenow/75934/resize/75934_2.jpg", 45, 4.80, "Alimentari"),
+
+    $product3 = new Product("Gazebo", "https://images-na.ssl-images-amazon.com/images/I/812mSm7TTnL._AC_SX466_.jpg", 2, 230, "Tempo Libero")
+]
 
 
 ?>
@@ -42,18 +50,42 @@ $products = [
 
     <main>
         <div class="container">
-            <section class="products">
-                <?php foreach ($products as $product) {
-                ?>
-                    <div class="product">
-                        <h2><?= $product->getName() ?></h2>
-                        <img src="<?= $product->getImg() ?>" alt="">
-                        <h5>Prezzo: <?= $product->getPrice() ?></h5>
-                        <h5>Sconto: <?= $customer->getDiscount() ?></h5>
-                        <h6>Quantità: <?= $product->getQuantity() ?></h6>
-                    </div>
-                <?php } ?>
-            </section>
+            <div class="customer">
+                <h2><?= $customer1->getFullName() ?></h2>
+                <section class="products">
+                    <?php foreach ($products1 as $product) {
+                    ?>
+                        <div class="product">
+                            <h3><?= $product->getName() ?></h3>
+                            <img src="<?= $product->getImg() ?>" alt="">
+                            <div class="info">
+                                <h5 class="price">Prezzo: <?= $product->getPrice() ?></h5>
+                                <h5>Sconto: <?= $product->getDiscount() ?>%</h5>
+                                <h5>Prezzo Scontato: <?= $product->getFinalPrice() ?></h5>
+                                <h6>Disponibili: <?= $product->getQuantity() ?></h6>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </section>
+            </div>
+            <div class="customer">
+                <h2><?= $customer2->getFullName() ?></h2>
+                <section class="products">
+                    <?php foreach ($products2 as $product) {
+                    ?>
+                        <div class="product">
+                            <h3><?= $product->getName() ?></h3>
+                            <img src="<?= $product->getImg() ?>" alt="">
+                            <div class="info">
+                                <h5 class="price">Prezzo: <?= $product->getPrice() ?></h5>
+                                <h5>Sconto: <?= $product->getDiscount() ?>%</h5>
+                                <h5>Prezzo Scontato: <?= $product->getFinalPrice() ?></h5>
+                                <h6>Disponibili: <?= $product->getQuantity() ?></h6>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </section>
+            </div>
         </div>
     </main>
 </body>

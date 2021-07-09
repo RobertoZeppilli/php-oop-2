@@ -17,15 +17,24 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 30px;
+}
+.customer {
     margin-top: 50px;
+}
+.customer h2{
+    background-color: grey;
+    color: #fff;
 }
 .product {
     padding: 10px;
-    border: 1px solid black;
     width: calc(100% / 3 - 1rem);
+    border: 1px solid #191919;
 }
+
 .product img {
-    /* height: 100px; */
-    width: 100%;
-    object-fit: cover;
+    height: 200px;
+}
+.price {
+    text-decoration: line-through red;
 }

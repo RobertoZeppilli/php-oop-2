@@ -1,13 +1,12 @@
 <?php 
 class Category {
-    private $sector;
     private $categoryName;
+    private $discount;
    
     
-    function __construct($sector, $categoryName) {
-        $this->sector = $sector;
+    function __construct($categoryName, $discount = 0) {
         $this->categoryName = $categoryName;
-        
+        $this->discount = $discount;
     }
 
     

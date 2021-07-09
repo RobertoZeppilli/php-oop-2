@@ -3,17 +3,17 @@
 class Customer {
     private $name;
     private $surname;
-    private $discount;
     private $age;
     private $gender;
+    private $premium;
 
 
-    function __construct($name = "", $surname = "", $discount, $age, $gender) {
+    function __construct($name = "", $surname = "", $age, $gender, $premium) {
         $this->name = $name;
         $this->surname = $surname;
         $this->age = $age;
-        $this->discount = $discount;
         $this->gender = $gender;
+        $this->premium = $premium;
     }
 
     public function getAge() {
@@ -24,13 +24,4 @@ class Customer {
         $prefix = ($this->gender == "M") ? "Sig. " : "Sig.ra ";
         return $prefix . " " . $this->name . " " . $this->surname;
     }
-    
-    public function getDiscount() {
-        if($this->age <= 30) {
-           return "- " . 40 . "%";
-        } else {
-           return "- " . 10 . "%";
-        }
-    }
-
 }
