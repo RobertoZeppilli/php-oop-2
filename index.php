@@ -8,7 +8,6 @@ $user->insertCreditCard($c); */
 
 require __DIR__ . "/classes/Product.php";
 require __DIR__ . "/classes/Customer.php";
-$discount = 30;
 
 $customer1 = new Customer("Paolo", "Citti", 30, "M", false);
 $customer2 = new Customer("Giulia", "Arcani", 26, "F", true);
@@ -29,8 +28,7 @@ $products2 = [
     $product2 = new Product("Insalata", "https://d21mug5vzt7ic2.cloudfront.net/primenow/75934/resize/75934_2.jpg", 45, 4.80, "Alimentari"),
 
     $product3 = new Product("Gazebo", "https://images-na.ssl-images-amazon.com/images/I/812mSm7TTnL._AC_SX466_.jpg", 2, 230, "Tempo Libero")
-]
-
+];
 
 ?>
 

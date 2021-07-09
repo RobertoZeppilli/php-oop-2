@@ -1,26 +1,24 @@
 <?php
-require_once __DIR__ . "/Category.php";
-
-class Product extends Category
+class Product 
 {
 
     private $name;
     private $productPicture;
     private $quantity;
     private $price;
-    private $finalPrice;
+    private $categoryName;
+    private $discount;
 
     function __construct($name, $productPicture, $quantity, $price, $categoryName, $discount = 0)
     {
-        parent::__construct($categoryName, $discount);
         $this->name = $name;
         $this->productPicture = $productPicture;
         $this->quantity = $quantity;
         $this->price = $price;
         $this->categoryName = $categoryName;
-        $this->discount = $discount;
     }
-
+    
+    
     public function getName()
     {
         return $this->name;
@@ -33,15 +31,12 @@ class Product extends Category
 
     public function getPrice()
     {
-        return $this->price . "$";
+        return number_format($this->price, 2) . "$";
     }
 
     public function getQuantity()
     {
         return $this->quantity;
-    }
-    public function setFinalPrice($finalPrice) {
-        $this->finalPrice = $finalPrice;
     }
 
     public function getFinalPrice() {
@@ -50,12 +45,6 @@ class Product extends Category
 
     public function getDiscount()
     {
-        if ($this->categoryName == "Tecnologia") {
-            return $this->discount = 20;
-        } elseif ($this->categoryName == "Alimentari") {
-            return $this->discount = 30;
-        } else {
-            return $this->discount = 10;
-        }
+        return $this->categoryName == "Tempo Libero" ? $this->discount = 20 : $this->discount = 5;
     }
 }
