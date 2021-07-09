@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: grey;
+    padding: 10px;
+    text-align: right;
+}
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.product {
+    padding: 10px;
+    border: 1px solid black;
+    width: calc(100% / 3 - 1rem);
+}
+.product img {
+    /* height: 100px; */
+    width: 100%;
+    object-fit: cover;
+}
