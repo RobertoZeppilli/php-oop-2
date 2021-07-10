@@ -5,7 +5,7 @@
 }
 
 header {
-    background-color: grey;
+    background-color: #808080;
     padding: 10px;
     text-align: right;
 }
@@ -23,7 +23,7 @@ header {
     margin-top: 50px;
 }
 .customer h2{
-    background-color: grey;
+    background-color: #808080;
     color: #fff;
 }
 .product {
@@ -36,5 +36,5 @@ header {
     height: 200px;
 }
 .price {
-    text-decoration: line-through red;
+    text-decoration: line-through #ff0000;
 }

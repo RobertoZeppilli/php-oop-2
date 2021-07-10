@@ -1,35 +1,37 @@
 <?php
 
-/*Oggi pomeriggio provate ad immaginare quali sono le classi necessarie per creare uno shop online; ad esempio, ci saranno sicuramente dei prodotti da acquistare e degli utenti che fanno shopping.
-Strutturare le classi gestendo l'ereditarietà dove necessario; ad esempio ci potrebbero essere degli utenti premium che hanno diritto a degli sconti esclusivi, oppure diverse tipologie di prodotti.
-Provate a far interagire tra di loro gli oggetti: ad esempio, l'utente dello shop inserisce una carta di credito...
-$c = new CreditCard(..);
-$user->insertCreditCard($c); */
-
 require __DIR__ . "/classes/Product.php";
 require __DIR__ . "/classes/Customer.php";
 
-$customer1 = new Customer("Paolo", "Citti", 30, "M", false);
-$customer2 = new Customer("Giulia", "Arcani", 26, "F", true);
-
+$customer1 = new Customer("Paolo", "Citti", 30, "M");
+$customer2 = new Customer("Giulia", "Arcani", 26, "F");
 
 $products1 = [
-    $product1 = new Product("Iphone X", "https://m.media-amazon.com/images/I/71IluxZN8pL._AC_UL800_QL65_.jpg", 4, 300.50, "Tecnologia"),
+    $product1 = new Product("Iphone X", "Reparto Informatica", "https://m.media-amazon.com/images/I/71IluxZN8pL._AC_UL800_QL65_.jpg", 1, 300.50, "Tecnologia"),
 
-    $product2 = new Product("Penne Rigate", "https://flashdistribuzione.com/wp-content/uploads/2020/10/PENNE-RIGATE-600x600.jpg", 6, 3.50, "Alimentari"),
+    $product2 = new Product("Penne Rigate", "Reparto Alimentari", "https://flashdistribuzione.com/wp-content/uploads/2020/10/PENNE-RIGATE-600x600.jpg", 5, 3.50, "Alimentari"),
 
-    $product3 = new Product("Nikon D5500", "https://www.weshoot.it/blog/wp-content/uploads/2015/01/phpigsx3r.jpg", 10, 320, "Tempo Libero")
+    $product3 = new Product("Nikon D5500", "Reparto Hobby", "https://www.weshoot.it/blog/wp-content/uploads/2015/01/phpigsx3r.jpg", 1, 320, "Tempo Libero")
 
 ];
+
 
 $products2 = [
-    $product1 = new Product("Tablet", "https://media.bytecno.it/catalog/product/1/_/1_740.jpg", 22, 240.00, "Tecnologia"),
+    $product1 = new Product("Tablet", "Reparto Informatica", "https://media.bytecno.it/catalog/product/1/_/1_740.jpg", 1, 240.00, "Tecnologia"),
 
-    $product2 = new Product("Insalata", "https://d21mug5vzt7ic2.cloudfront.net/primenow/75934/resize/75934_2.jpg", 45, 4.80, "Alimentari"),
+    $product2 = new Product("Insalata", "Reparto Alimentari", "https://d21mug5vzt7ic2.cloudfront.net/primenow/75934/resize/75934_2.jpg", 3, 4.80, "Alimentari"),
 
-    $product3 = new Product("Gazebo", "https://images-na.ssl-images-amazon.com/images/I/812mSm7TTnL._AC_SX466_.jpg", 2, 230, "Tempo Libero")
+    $product3 = new Product("Gazebo", "Reparto Hobby", "https://images-na.ssl-images-amazon.com/images/I/812mSm7TTnL._AC_SX466_.jpg", 1, 230, "Tempo Libero")
 ];
 
+// $products1[0]->getPrime(true);
+echo $products1[0]->setPrime(true);
+echo $products1[1]->setPrime(false);
+echo $products1[2]->setPrime(true);
+echo $products2[0]->setPrime(false);
+echo $products2[1]->setPrime(true);
+echo $products2[2]->setPrime(true);
+// var_dump($products2[2]);
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +41,7 @@ $products2 = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>Shop</title>
 </head>
@@ -61,6 +64,7 @@ $products2 = [
                                 <h5>Sconto: <?= $product->getDiscount() ?>%</h5>
                                 <h5>Prezzo Scontato: <?= $product->getFinalPrice() ?></h5>
                                 <h6>Disponibili: <?= $product->getQuantity() ?></h6>
+                                <h4><?= $product->getPrime() ?></h4>
                             </div>
                         </div>
                     <?php } ?>
@@ -79,6 +83,7 @@ $products2 = [
                                 <h5>Sconto: <?= $product->getDiscount() ?>%</h5>
                                 <h5>Prezzo Scontato: <?= $product->getFinalPrice() ?></h5>
                                 <h6>Disponibili: <?= $product->getQuantity() ?></h6>
+                                <h4><?= $product->getPrime() ?></h4>
                             </div>
                         </div>
                     <?php } ?>

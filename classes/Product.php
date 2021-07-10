@@ -1,28 +1,25 @@
 <?php
-class Product 
+require_once __DIR__ . "/../traits/discount.php";
+require_once __DIR__ . "/Store.php";
+class Product extends Store
 {
+    use Discount;
 
-    private $name;
     private $productPicture;
     private $quantity;
     private $price;
-    private $categoryName;
-    private $discount;
+    private $prime;
 
-    function __construct($name, $productPicture, $quantity, $price, $categoryName, $discount = 0)
+    function __construct($name = "", $location = "", $productPicture, $quantity, $price, $categoryName, $discount = 0)
     {
-        $this->name = $name;
+        parent::__construct($name, $location);
         $this->productPicture = $productPicture;
         $this->quantity = $quantity;
         $this->price = $price;
         $this->categoryName = $categoryName;
+        $this->discount = $discount;
     }
     
-    
-    public function getName()
-    {
-        return $this->name;
-    }
 
     public function getImg()
     {
@@ -38,13 +35,14 @@ class Product
     {
         return $this->quantity;
     }
-
+    
+    public function setPrime($prime) {
+        $this->prime = $prime;
+    }
+    public function getPrime() {
+        return ($this->prime) ? "Spedizione Gratuita " . '<i class="fas fa-check"></i>' : "Spedizione non inclusa " . '<i class="fas fa-times"></i>';
+    }
     public function getFinalPrice() {
        return number_format($this->price - ($this->price * $this->discount / 100), 2) . "$";
-    }
-
-    public function getDiscount()
-    {
-        return $this->categoryName == "Tempo Libero" ? $this->discount = 20 : $this->discount = 5;
     }
 }
