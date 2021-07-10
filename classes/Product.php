@@ -10,7 +10,7 @@ class Product extends Store
     private $price;
     private $prime;
 
-    function __construct($name = "", $location = "", $productPicture, $quantity, $price, $categoryName, $discount = 0)
+    function __construct($name = "", $location = "", $productPicture, $quantity, $price, $prime, $categoryName, $discount = 0)
     {
         parent::__construct($name, $location);
         $this->productPicture = $productPicture;
@@ -18,8 +18,9 @@ class Product extends Store
         $this->price = $price;
         $this->categoryName = $categoryName;
         $this->discount = $discount;
+        $this->prime = $prime;
     }
-    
+
 
     public function getImg()
     {
@@ -35,14 +36,13 @@ class Product extends Store
     {
         return $this->quantity;
     }
-    
-    public function setPrime($prime) {
-        $this->prime = $prime;
-    }
-    public function getPrime() {
+
+    public function getPrime()
+    {
         return ($this->prime) ? "Spedizione Gratuita " . '<i class="fas fa-check"></i>' : "Spedizione non inclusa " . '<i class="fas fa-times"></i>';
     }
-    public function getFinalPrice() {
-       return number_format($this->price - ($this->price * $this->discount / 100), 2) . "$";
+    public function getFinalPrice()
+    {
+        return number_format($this->price - ($this->price * $this->discount / 100), 2) . "$";
     }
 }

@@ -1,7 +1,7 @@
 <?php
 class Store {
-    private $name;
-    private $location;
+    protected $name;
+    protected $location;
 
     function __construct($name = "", $location = "") {
         $this->name = $name;

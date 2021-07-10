@@ -18,7 +18,7 @@ class Customer {
 
     public function getFullName() {
         $prefix = ($this->gender == "M") ? "Sig. " : "Sig.ra ";
-        return $prefix . " " . $this->name . " " . $this->surname;
+        return $prefix . " " . ucfirst($this->name) . " " . ucfirst($this->surname);
     }
     
 }
